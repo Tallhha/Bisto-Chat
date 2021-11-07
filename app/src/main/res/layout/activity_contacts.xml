@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1c1b1b"
+    android:orientation="vertical"
+    android:weightSum="3"
+    tools:context=".Contacts">
+
+    <RelativeLayout
+        android:background="@drawable/round_bottom"
+        android:backgroundTint="#1f1f1f"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_pic"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/dp"
+
+            />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/profile_pic"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            android:text="Tayyab Abbas"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/Edit"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:scaleType="fitCenter"
+            android:textColor="#0177e6"
+            android:gravity="center"
+            android:text="Edit"
+            />
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_weight="0.6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/add_contact_cardView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:elevation="10dp">
+
+            <ImageView
+                android:focusable="true"
+                android:clickable="true"
+                android:id="@+id/add_contact"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_add_contact"
+                android:background="#007ef4"
+                android:padding="10dp"
+                android:scaleType="centerCrop"
+                />
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New contact"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@id/add_contact_cardView"
+            android:layout_alignTop="@id/add_contact_cardView"
+            android:layout_alignBottom="@id/add_contact_cardView"
+            android:gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/make_group_cardView"
+            android:layout_below="@+id/add_contact_cardView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:elevation="10dp">
+
+            <ImageView
+                android:focusable="true"
+                android:clickable="true"
+                android:id="@+id/make_group"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/new_group"
+                android:background="#007ef4"
+                android:padding="10dp"
+                android:scaleType="centerCrop"
+                />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New group"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@id/make_group_cardView"
+            android:layout_alignTop="@id/make_group_cardView"
+            android:layout_alignBottom="@id/make_group_cardView"
+            android:gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/chat_gradient"
+            android:layout_alignParentBottom="true"
+            />
+
+        <TextView
+            android:id="@+id/contacted_frequently"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CONTACTED FREQENTLY"
+            android:textColor="@color/white"
+            android:gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:textSize="15dp"
+            android:layout_margin="10dp"
+            android:layout_below="@id/make_group_cardView"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/contacted_frequently"
+            android:scrollbars="vertical"
+
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@drawable/round_top"
+        android:layout_weight="2.4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="#1f1f1f"
+        >
+
+        <ImageButton
+            android:id="@+id/call"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/ic_call"
+            android:backgroundTint="#878787"
+            android:scaleType="fitCenter" />
+
+        <ImageButton
+            android:background="@drawable/ic_camera"
+            android:id="@+id/camera"
+            android:layout_toRightOf="@+id/call"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="30dp"
+            android:scaleType="fitCenter"
+            android:backgroundTint="#878787"
+            android:layout_marginLeft="50dp" />
+
+        <ImageButton
+            android:id="@+id/message"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="50dp"
+            android:layout_toLeftOf="@+id/contacts"
+            android:background="@drawable/ic_outline_chat_bubble_outline"
+            android:backgroundTint="#878787"
+            android:scaleType="fitCenter" />
+
+        <ImageButton
+            android:background="@drawable/acc"
+            android:id="@+id/contacts"
+            android:layout_alignParentRight="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="65dp"
+            android:scaleType="fitCenter"
+
+            android:backgroundTint="#0c589e"
+
+            />
+
+
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

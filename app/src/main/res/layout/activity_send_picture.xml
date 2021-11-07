@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SendPicture"
+    android:background="#1c1b1b"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/image_to_send"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:cardCornerRadius="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:elevation="10dp">
+
+        <ImageView
+            android:id="@+id/roundedImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/dp"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/send_text"
+        android:layout_below="@id/image_to_send"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Send at recent contacts"
+        android:textColor="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:textSize="18dp"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/suggestion_1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/send_text"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/dp" />
+
+
+    <TextView
+        android:id="@+id/name_suggestion_1"
+        android:layout_toRightOf="@+id/suggestion_1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Tayyab Abbas"
+        android:textColor="@color/white"
+        android:layout_alignBaseline="@id/suggestion_1"
+        android:layout_alignTop="@id/suggestion_1"
+        android:layout_marginTop="15dp"
+        />
+    <ImageButton
+        android:id="@+id/goto_suggestion_1"
+        android:layout_alignTop="@id/suggestion_1"
+        android:layout_margin="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_back"
+        android:rotation="180"
+        />
+
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/suggestion_2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/suggestion_1"
+        android:src="@drawable/dp"
+        android:layout_margin="10dp"
+        />
+    <TextView
+        android:id="@+id/name_suggestion_2"
+        android:layout_toRightOf="@+id/suggestion_2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Tayyab Abbas"
+        android:textColor="@color/white"
+        android:layout_alignBaseline="@id/suggestion_2"
+        android:layout_alignTop="@id/suggestion_2"
+        android:layout_marginTop="15dp"
+        />
+    <ImageButton
+        android:id="@+id/goto_suggestion_2"
+        android:layout_alignTop="@id/suggestion_2"
+        android:layout_margin="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_back"
+        android:rotation="180"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/suggestion_3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/suggestion_2"
+        android:src="@drawable/dp"
+        android:layout_margin="10dp"
+        />
+    <TextView
+        android:id="@+id/name_suggestion_3"
+        android:layout_toRightOf="@+id/suggestion_3"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Tayyab Abbas"
+        android:textColor="@color/white"
+        android:layout_alignBaseline="@id/suggestion_3"
+        android:layout_alignTop="@id/suggestion_3"
+        android:layout_marginTop="15dp"
+        />
+    <ImageButton
+        android:id="@+id/goto_suggestion_3"
+        android:layout_alignTop="@id/suggestion_3"
+        android:layout_margin="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_back"
+        android:rotation="180"
+        />
+
+    <TextView
+        android:focusable="true"
+        android:clickable="true"
+        android:id="@+id/delete"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/round_text"
+        android:backgroundTint="#3d3d3d"
+        android:gravity="center"
+        android:text="Delete"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/status_suggestion_1"
+        android:alpha="1.0"
+        android:background="@drawable/round_text"
+        android:backgroundTint="#0CF115"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignBottom="@id/suggestion_1"
+        android:layout_alignRight="@id/suggestion_1"
+        />
+    <TextView
+        android:id="@+id/status_suggestion_2"
+        android:alpha="0.0"
+        android:background="@drawable/round_text"
+        android:backgroundTint="#0CF115"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignBottom="@id/suggestion_2"
+        android:layout_alignRight="@id/suggestion_2"
+        />
+    <TextView
+        android:id="@+id/status_suggestion_3"
+        android:alpha="0.0"
+        android:background="@drawable/round_text"
+        android:backgroundTint="#0CF115"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignBottom="@id/suggestion_3"
+        android:layout_alignRight="@id/suggestion_3"
+        />
+
+</RelativeLayout>
