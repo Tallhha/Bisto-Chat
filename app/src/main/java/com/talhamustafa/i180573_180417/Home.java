@@ -31,7 +31,7 @@ public class Home extends AppCompatActivity {
 
     ImageButton call, camera, message, contacts;
     ImageView edit;
-    ImageView test;
+    ImageView test, test1;
 
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
