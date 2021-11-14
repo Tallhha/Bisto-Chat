@@ -11,11 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class SignUp extends AppCompatActivity {
 
     EditText email, pw, confirm;
     Button signup, login;
-    MyDBHelper helper;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,48 +32,29 @@ public class SignUp extends AppCompatActivity {
 
         signup = (Button) findViewById(R.id.button_signup);
         login = (Button) findViewById(R.id.button_login);
-        helper = new MyDBHelper(SignUp.this);
 
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String password = pw.getText().toString();
-                String cnfrm = confirm.getText().toString();
-                String em = email.getText().toString();
+        mAuth = FirebaseAuth.getInstance();
 
-                if (em.equals("") || password.equals("") || cnfrm.equals("")) {
-                    Toast.makeText(SignUp.this, "Enter all fields", Toast.LENGTH_SHORT).show();
-                } else {
-                    if (password.equals(cnfrm)) {
-                        Boolean chkuser = helper.checkEmail(em);
-                        if(!chkuser) {
-                            Boolean insert = helper.insertData(em, password);
-                            if(insert){
-                                Toast.makeText(SignUp.this, "ADDED", Toast.LENGTH_SHORT).show();
-                                //New Intent
-                                Intent intent = new Intent(SignUp.this, CreateAccount.class);
-                                intent.putExtra("email",em);
-                                startActivity(intent);
-                            }
-                            else{
-                                Toast.makeText(SignUp.this, "NOT ADDED", Toast.LENGTH_SHORT).show();
-
-                            }
-                        }
-                        else{
-                            Toast.makeText(SignUp.this, "ALREADY EXISTS", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(SignUp.this, Login.class);
+        signup.setOnClickListener( v -> {
+            mAuth.createUserWithEmailAndPassword(email.getText().toString(),pw.getText().toString())
+                    .addOnCompleteListener(task -> {
+                        if(task.isSuccessful()){
+                            createProfile(mAuth.getCurrentUser().getUid(),email.getText().toString());
+                            Intent intent=new Intent(SignUp.this,CreateAccount.class);
+                            intent.putExtra("id",mAuth.getCurrentUser().getUid());
+                            intent.putExtra("email",email.getText().toString());
                             startActivity(intent);
-                        }
-                        helper.close();
-                        finish();
-                    }
-                    else{
-                        Toast.makeText(SignUp.this, "MISMATCH", Toast.LENGTH_SHORT).show();
-                    }
+                            finish();
 
-                }
-            }
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(
+                                SignUp.this,
+                                "Failed...!",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    });
         });
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -81,5 +65,25 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void createProfile(String id, String email){
+        Intent intent = new Intent(SignUp.this,CreateAccount.class);
+        intent.putExtra("id",id);
+        intent.putExtra("email",email);
+        startActivity(intent);
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser!=null){
+//            Toast.makeText(
+//                    RegisterActivity.this,
+//                    currentUser.getUid()+"",
+//                    Toast.LENGTH_SHORT
+//            ).show();
+        }
     }
 }
