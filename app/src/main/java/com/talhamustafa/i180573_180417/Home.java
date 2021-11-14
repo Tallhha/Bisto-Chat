@@ -28,7 +28,6 @@ import java.util.ArrayList;
 
 //THIS IS HOME PAGE: ITS THE PAGE OF HOME
 public class Home extends AppCompatActivity {
-
     ImageButton call, camera, message, contacts;
     ImageView edit;
     ImageView test, test1;

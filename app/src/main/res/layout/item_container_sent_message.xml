@@ -38,53 +38,12 @@
         android:layout_alignBottom="@id/text_message"
         />
 
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_below="@+id/text_time"
-        android:id="@+id/dp"
-        android:layout_marginTop="10dp"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:src="@drawable/dp" />
-
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="70dp"
-        android:id="@+id/text_message1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_time"
-        android:layout_alignParentLeft="true"
-
-        android:background="@drawable/background_received_message"
-        android:maxWidth="300dp"
-        android:minWidth="60dp"
-
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="30dp"
-        android:textColor="@color/white"
-        android:textSize="13dp" />
-
-
-    <TextView
-        android:layout_marginLeft="70dp"
-        android:id="@+id/text_time1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textColor="@color/white"
-        android:padding="10dp"
-        android:textSize="10dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignBottom="@id/text_message1"
-        />
 
     <TextView
         android:id="@+id/ss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_time1"
+        android:layout_below="@+id/text_time"
         android:layout_centerInParent="true"
         android:alpha="0.0"
         android:text="Screenshot Captured"
@@ -92,7 +51,7 @@
         android:textSize="10dp" />
 
     <ImageView
-        android:layout_below="@+id/text_time1"
+        android:layout_below="@+id/text_time"
         android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

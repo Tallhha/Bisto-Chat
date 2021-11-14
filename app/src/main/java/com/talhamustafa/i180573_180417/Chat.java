@@ -38,6 +38,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,6 +51,12 @@ import java.util.List;
 
 
 public class Chat extends ScreenshotDetectionActivity{
+
+
+
+    FirebaseDatabase database;
+    DatabaseReference reference;
+    private FirebaseAuth mAuth;
 
     EditText input_message;
     ImageView camera, msg_sent;
@@ -58,9 +68,11 @@ public class Chat extends ScreenshotDetectionActivity{
     ArrayList<ChatMsg> msg = add_values();
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    ChatAdapter chatAdapter;
+    //ChatAdapter chatAdapter;
     int pic;
     String name;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,18 +88,40 @@ public class Chat extends ScreenshotDetectionActivity{
         text_name = findViewById(R.id.text_name);
         back = findViewById(R.id.back_button);
 
-        name = getIntent().getStringExtra("name");
+
+        mAuth = FirebaseAuth.getInstance();
+        Intent data=getIntent();
+
+        String id=data.getStringExtra("id");
+        String name= data.getStringExtra("profileName");
+
+        database=FirebaseDatabase.getInstance();
+        reference=database.getReference("Chats");
+
+
+
+    //    msg_sent.setOnClickListener(view -> reference.push().setValue(
+      //          new Message(mAuth.getCurrentUser().getUid(), id, input_message.getText().toString(),"",false))
+        //);
+
+        msg_sent.setOnClickListener(view -> reference.push().setValue(
+                new ChatMsg(mAuth.getCurrentUser().getUid(), id, input_message.getText().toString(),"",false))
+        );
+
+
+
+   /*     name = getIntent().getStringExtra("name");
         text_name.setText(name);
         pic = getIntent().getIntExtra("photo",0);
 
         recyclerView = findViewById(R.id.chat_recycler_view);
-        chatAdapter = new ChatAdapter(msg, getApplicationContext());
+       // chatAdapter = new ChatAdapter(msg, getApplicationContext());
         layoutManager = new LinearLayoutManager(Chat.this);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(chatAdapter);
+       // recyclerView.setAdapter(chatAdapter);
         //recyclerView.setHasFixedSize(true);
 
-
+*/
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,7 +145,6 @@ public class Chat extends ScreenshotDetectionActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Chat.this, Call.class);
-                intent.putExtra("name",name);
                 intent.putExtra("photo",pic);
                 startActivity(intent);
 
@@ -121,23 +154,7 @@ public class Chat extends ScreenshotDetectionActivity{
         msg_sent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ChatMsg list;
-                list = new ChatMsg(input_message.getText().toString(),timeStamp,"Hmm",timeStamp,"1",pic, 0, null);
-                msg.add(list);
-                String name = getIntent().getStringExtra("name");
 
-                MyDBHelper db = new MyDBHelper(Chat.this);
-                Boolean check = db.insertMsg(name, list);
-                if(check){
-                    //Toast.makeText(Chat.this, "ADDED MSG", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(Chat.this, "FAILED", Toast.LENGTH_SHORT).show();
-                }
-
-                input_message.setText("");
-                chatAdapter = new ChatAdapter(msg, Chat.this);
-                recyclerView.setAdapter(chatAdapter);
             }
         });
 
@@ -168,13 +185,6 @@ public class Chat extends ScreenshotDetectionActivity{
 
         // build notification
 
-        msg.get(msg.size() - 1).setSs(1);
-        MyDBHelper helper = new MyDBHelper(this);
-        helper.updateMsg1(msg.get(msg.size() - 1).getMsg(),1);
-
-        chatAdapter = new ChatAdapter(msg, Chat.this);
-        recyclerView.setAdapter(chatAdapter);
-
     }
 
     @Override
@@ -186,7 +196,6 @@ public class Chat extends ScreenshotDetectionActivity{
     protected void onResume() {
         super.onResume();
         System.out.print("ON RESUME CALLED");
-        getData();
     }
 
 
@@ -200,35 +209,10 @@ public class Chat extends ScreenshotDetectionActivity{
         return lst;
     }
 
-    public void getData(){
-        MyDBHelper db = new MyDBHelper(Chat.this);
-        String name = getIntent().getStringExtra("name");
-        System.out.println(name);
-        Cursor c = db.getMessage(name);
-
-        if(c.getCount() == 0){
-            return;
-        }
-        //GET
-        msg.clear();
-        while (c.moveToNext()){
-            msg.add(new ChatMsg(c.getString(5), c.getString(2), c.getString(3), c.getString(4),c.getString(0),pic, c.getInt(6), null));
-        }
-        chatAdapter = new ChatAdapter(msg, Chat.this);
-        recyclerView.setAdapter(chatAdapter);
-
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100) {
-            Bitmap captureImage = (Bitmap) data.getExtras().get("data");
-
-            msg.get(msg.size() - 1).setBitmap(captureImage);
-            chatAdapter = new ChatAdapter(msg, Chat.this);
-            recyclerView.setAdapter(chatAdapter);
-
         }
     }
 }

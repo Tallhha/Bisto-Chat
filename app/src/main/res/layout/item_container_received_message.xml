@@ -44,4 +44,16 @@
         android:layout_alignBottom="@id/text_message1"
         />
 
+
+    <TextView
+        android:id="@+id/ss1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_time1"
+        android:layout_centerInParent="true"
+        android:alpha="0.0"
+        android:text="Screenshot Captured"
+        android:textColor="@color/white"
+        android:textSize="10dp" />
+
 </RelativeLayout>

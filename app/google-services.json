@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "370884917204",
-    "project_id": "i180573-180417-bistro",
-    "storage_bucket": "i180573-180417-bistro.appspot.com"
+    "project_number": "55922694134",
+    "project_id": "i180573-180417",
+    "storage_bucket": "i180573-180417.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:370884917204:android:27515deb46e1f591440841",
+        "mobilesdk_app_id": "1:55922694134:android:e4a018b446a377f5fcd9d7",
         "android_client_info": {
           "package_name": "com.talhamustafa.i180573_180417"
         }
       },
       "oauth_client": [
         {
-          "client_id": "370884917204-pr656klekij42ifmccglc9rmgj2cq56d.apps.googleusercontent.com",
+          "client_id": "55922694134-hfgbp19po00o4atp3ajb56728244ud9n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAlHCu-ZocpdjkBRbv600RtmxU574S6Z_I"
+          "current_key": "AIzaSyChRjhPzT67bbbqtGF4nE2tJ9wR6g7xNwQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "370884917204-pr656klekij42ifmccglc9rmgj2cq56d.apps.googleusercontent.com",
+              "client_id": "55922694134-hfgbp19po00o4atp3ajb56728244ud9n.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -108,11 +108,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(MyContacts.Chats._NAME, name);
-        cv.put(MyContacts.Chats._MSG, list.getMsg());
-        cv.put(MyContacts.Chats._TIME, list.getTime());
-        cv.put(MyContacts.Chats._REPLY_TIME, list.getRtime());
-        cv.put(MyContacts.Chats._REPLY_MSG, list.getReply());
-        cv.put(MyContacts.Chats._SS, list.getSs());
 
         long result = database.insert(MyContacts.Chats.TABLENAME,null,cv);
         System.out.println("INSERTED? " + result);

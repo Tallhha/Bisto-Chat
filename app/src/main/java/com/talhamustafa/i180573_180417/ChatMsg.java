@@ -3,82 +3,71 @@ package com.talhamustafa.i180573_180417;
 import android.graphics.Bitmap;
 
 public class ChatMsg {
-    String msg, time, reply, rtime, id;
-    int dp, ss;
-    Bitmap bitmap;
+    String senderId;
+    String receiverId;
+    String text;
+    Long timestamp;
+    String imgSrc;
+    Boolean containsImage;
 
-    public ChatMsg(String msg, String time, String reply, String rtime, String id, int dp, int ss, Bitmap bitmap) {
-        this.msg = msg;
-        this.time = time;
-        this.reply = reply;
-        this.rtime = rtime;
-        this.id = id;
-        this.dp = dp;
-        this.ss = ss;
-        this.bitmap = bitmap;
+    public ChatMsg(String senderId, String receiverId, String text,String imgSrc,Boolean containsImage) {
+        this.senderId = senderId;
+        this.receiverId = receiverId;
+        this.text = text;
+        this.timestamp=System.currentTimeMillis()/1000;
+        this.imgSrc=imgSrc;
+        this.containsImage=containsImage;
     }
 
-    public Bitmap getBitmap() {
-        return bitmap;
+    public ChatMsg(){
+
     }
 
-    public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
+    public String getImgSrc() {
+        return imgSrc;
     }
 
-    public int getSs() {
-        return ss;
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
     }
 
-    public void setSs(int ss) {
-        this.ss = ss;
+    public Boolean getContainsImage() {
+        return containsImage;
     }
 
-    public int getDp() {
-        return dp;
+    public void setContainsImage(Boolean containsImage) {
+        this.containsImage = containsImage;
     }
 
-    public void setDp(int dp) {
-        this.dp = dp;
+    public Long getTimestamp() {
+        return timestamp;
     }
 
-    public String getId() {
-        return id;
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getSenderId() {
+        return senderId;
     }
 
-    public String getMsg() {
-        return msg;
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public String getReceiverId() {
+        return receiverId;
     }
 
-    public String getTime() {
-        return time;
+    public void setReceiverId(String receiverId) {
+        this.receiverId = receiverId;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public String getText() {
+        return text;
     }
 
-    public String getReply() {
-        return reply;
-    }
-
-    public void setReply(String reply) {
-        this.reply = reply;
-    }
-
-    public String getRtime() {
-        return rtime;
-    }
-
-    public void setRtime(String rtime) {
-        this.rtime = rtime;
+    public void setText(String text) {
+        this.text = text;
     }
 }
