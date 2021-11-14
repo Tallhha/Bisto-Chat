@@ -4,27 +4,36 @@
     android:layout_height="match_parent"
     android:padding="4dp">
 
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@drawable/dp" />
+
     <TextView
-        android:id="@+id/text_message"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="70dp"
+        android:id="@+id/text_message1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+
         android:background="@drawable/background_received_message"
+        android:maxWidth="300dp"
+        android:minWidth="60dp"
 
         android:paddingLeft="20dp"
         android:paddingTop="20dp"
         android:paddingRight="20dp"
         android:paddingBottom="30dp"
-
         android:textColor="@color/white"
-        android:textSize="13dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:minWidth="60dp"
-        android:maxWidth="300dp"
-        />
+        android:textSize="13dp" />
+
 
     <TextView
-        android:id="@+id/text_time"
+        android:layout_marginLeft="70dp"
+        android:id="@+id/text_time1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -32,6 +41,7 @@
         android:padding="10dp"
         android:textSize="10dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignBottom="@id/text_message"
+        android:layout_alignBottom="@id/text_message1"
         />
+
 </RelativeLayout>
